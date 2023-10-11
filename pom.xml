@@ -9,14 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>training-service-testing</artifactId>
+    <artifactId>trainings-service-testing</artifactId>
     <packaging>pom</packaging>
 
     <groupId>com.bearingpoint.training</groupId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>training-service-testing</name>
-    <description>training-service-testing</description>
+    <name>trainings-service-testing</name>
+    <description>trainings-service-testing</description>
 
     <organization>
         <name>Bearingpoint GmbH</name>
@@ -33,22 +33,23 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.0</version>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
             </plugin>
         </plugins>
     </build>

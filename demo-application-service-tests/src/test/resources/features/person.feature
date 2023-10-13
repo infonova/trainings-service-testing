@@ -1,9 +1,9 @@
 @Automated
-Feature: Test person service
+Feature: Test user service
 
-  Scenario: Storing and deleting persons feature is successful
-    When person from file "requests/person1.json" gets successfully stored
-    And person from file "requests/person2.json" gets successfully stored
-    Then verify that 2 persons were stored via DemoApplication
-    And persons get successfully deleted
-    Then verify that 0 persons were stored via DemoApplication
+  Scenario: Storing and deleting users feature is successful
+    When user from file "requests/user1.json" gets successfully stored
+    And user from file "requests/user2.json" gets successfully stored
+    Then verify that 2 users were stored via DemoApplication
+    And users get successfully deleted
+    Then verify that 0 users were stored via DemoApplication

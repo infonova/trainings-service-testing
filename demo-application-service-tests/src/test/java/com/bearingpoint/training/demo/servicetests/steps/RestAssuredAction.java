@@ -11,7 +11,11 @@ public class RestAssuredAction {
     }
 
     public void sendRequest(String path) {
-        TestContext.setResponse(RestAssured.given().when().get(path));
+        String user = TestContext.getUser();
+        RequestSpecification request = RestAssured.given();
+        request.body(user);
+
+        TestContext.setResponse(request.get(path));
     }
 
     public void postRequestWithBody(String path, String body) {

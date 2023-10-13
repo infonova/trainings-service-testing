@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,10 +24,10 @@ public class DemoController {
     }
 
     @GetMapping(path = "/fancy-service")
-    public ResponseEntity<String> doFancyStuff() throws HttpResponseException {
+    public ResponseEntity<String> doFancyStuff(@RequestBody String user) throws HttpResponseException {
 
-        Response response = demoService.callExternalService();
+        Response response = demoService.callExternalService(user);
 
-        return ResponseEntity.status(response.getStatusCode()).build();
+        return ResponseEntity.ok(response.getBody().prettyPrint());
     }
 }

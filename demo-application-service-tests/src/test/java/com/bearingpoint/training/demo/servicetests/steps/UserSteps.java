@@ -5,25 +5,25 @@ import io.cucumber.java.en.Then;
 import org.assertj.core.api.Assertions;
 import org.json.JSONArray;
 
-public class PersonSteps {
-    PersonAction personAction = new PersonAction();
+public class UserSteps {
+    UserAction userAction = new UserAction();
 
-    @Then("person from file \"([^\"]+)\" gets successfully stored$")
-    public void addPerson(String path) {
-        personAction.addPerson(path);
+    @Then("user from file \"([^\"]+)\" gets successfully stored$")
+    public void adduser(String path) {
+        userAction.addUser(path);
         Assertions.assertThat(TestContext.getResponseStatusCode()).isEqualTo(200);
     }
 
-    @Then("verify that (\\d+) persons were stored via DemoApplication$")
-    public void verifyThatNPersonsWhereStored(Integer amount) {
-        personAction.getPersons();
+    @Then("verify that (\\d+) users were stored via DemoApplication$")
+    public void verifyThatNUsersWhereStored(Integer amount) {
+        userAction.getUsers();
         JSONArray response = TestContext.getResponseBodyAsJsonArray();
         Assertions.assertThat(response.length()).isEqualTo(amount);
     }
 
-    @Then("persons get successfully deleted$")
-    public void verifyThatNPersonsWhereStored() {
-        personAction.deletePersons();
+    @Then("users get successfully deleted$")
+    public void verifyThatNUsersWhereStored() {
+        userAction.deleteUsers();
         Assertions.assertThat(TestContext.getResponseStatusCode()).isEqualTo(200);
     }
 }

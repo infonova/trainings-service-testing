@@ -1,5 +1,6 @@
 {
-  "id": 1,
+  "id": "${randomUuid}",
+  "username": "Max.Mustermann",
   "firstName": "Max",
   "lastName": "Mustermann",
   "age": 23

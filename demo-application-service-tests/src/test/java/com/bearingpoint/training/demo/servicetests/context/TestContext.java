@@ -9,7 +9,15 @@ import org.json.JSONObject;
 public class TestContext {
     private static Response response = null;
     @Getter
+    private static String correlationId = null;
+    @Getter
     private static String user = "DefaultUser";
+
+
+
+    public static void setCorrelationId(String correlationId) {
+        TestContext.correlationId = correlationId;
+    }
 
     public static void setResponse(Response response) {
         TestContext.response = response;

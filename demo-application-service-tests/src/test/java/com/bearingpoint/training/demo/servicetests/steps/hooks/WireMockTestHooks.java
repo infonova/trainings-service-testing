@@ -3,23 +3,27 @@ package com.bearingpoint.training.demo.servicetests.steps.hooks;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 
 public class WireMockTestHooks {
 
-    private WireMockServer wireMockServer;
+    private static WireMockServer wireMockServer;
+    private static final String WIREMOCK_HOST = "localhost";
+    private static final int PORT = 8181;
 
 
-    @Before()
-    public void setup() {
+    @BeforeAll()
+    public static void setup() {
+        System.out.printf("Starting Wiremock on path: %s:%d%n", WIREMOCK_HOST, PORT);
         wireMockServer = new WireMockServer(WireMockConfiguration.options().port(8181));
         wireMockServer.start();
         WireMock.configureFor("http", "localhost", 8181, "");
     }
 
-    @After
-    public void tearDown() {
+    @AfterAll
+    public static void tearDown() {
+        System.out.printf("Stopping Wiremock on path: %s:%d%n", WIREMOCK_HOST, PORT);
         wireMockServer.stop();
     }
 }

@@ -28,12 +28,13 @@ public class WireMockSteps {
         wireMockAction.addStubMappingWithBody(url, expectedStatus, responseBody);
     }
 
-    @Given("^verify that Wiremock got (\\d+) request for \"([^\"]+)\" with \"([^\"]+)\"")
-    public void wireMockGotARequestForUrlWithBody(Integer amount, String url, String body) {
+    @Given("^verify that Wiremock got (\\d+) request for \"([^\"]+)\"")
+    public void wireMockGotARequestForUrlWithBody(Integer amount, String url) {
         Map<String, String> substitutionMap = new HashMap<>();
         substitutionMap.put("${user}", TestContext.getUser());
         url = TemplateUtils.resolveTemplate(url, substitutionMap);
-        List<LoggedRequest> requestsSendToWiremockFor = wireMockAction.getRequestsSendToWiremockFor(".*");
+        List<LoggedRequest> requestsSendToWiremockFor =
+                wireMockAction.getRequestsSendToWiremockForUrlWithHeader(".*", "X-Correlation-Id", TestContext.getCorrelationId());
 
         Assertions.assertThat(requestsSendToWiremockFor.size()).isEqualTo(amount);
 

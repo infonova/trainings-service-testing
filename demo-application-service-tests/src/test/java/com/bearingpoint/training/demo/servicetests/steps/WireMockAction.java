@@ -1,5 +1,6 @@
 package com.bearingpoint.training.demo.servicetests.steps;
 
+import com.bearingpoint.training.demo.servicetests.context.TestContext;
 import com.github.tomakehurst.wiremock.verification.LoggedRequest;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class WireMockAction {
 
     public void addStubMapping(String url, Integer expectedStatus) {
         stubFor(get(urlEqualTo(url))
+                .withHeader("X-Correlation-Id", equalTo(TestContext.getCorrelationId()))
                 .willReturn(aResponse()
                         .withStatus(expectedStatus)
                 ));
@@ -25,7 +27,11 @@ public class WireMockAction {
                 ));
     }
 
-    public List<LoggedRequest> getRequestsSendToWiremockFor(String url) {
-        return findAll(getRequestedFor(urlMatching(url)));
+    public List<LoggedRequest> getRequestsSendToWiremockForUrlWithHeader(String url, String headerName, String headerValue) {
+        System.out.println("test");
+        return findAll(
+                getRequestedFor(urlMatching(url))
+                        .withHeader(headerName, equalTo(headerValue))
+        );
     }
 }

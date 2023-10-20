@@ -1,5 +1,6 @@
 package com.bearingpoint.training.demoapplication.controller;
 
+import com.bearingpoint.training.demoapplication.dto.DemoRequestBody;
 import com.bearingpoint.training.demoapplication.service.DemoService;
 import io.restassured.response.Response;
 import org.apache.http.client.HttpResponseException;
@@ -24,9 +25,9 @@ public class DemoController {
     }
 
     @GetMapping(path = "/fancy-service")
-    public ResponseEntity<String> doFancyStuff(@RequestBody String user) throws HttpResponseException {
+    public ResponseEntity<String> doFancyStuff(@RequestBody DemoRequestBody requestBody) throws HttpResponseException {
 
-        Response response = demoService.callExternalService(user);
+        Response response = demoService.callExternalService(requestBody);
 
         return ResponseEntity.ok(response.getBody().prettyPrint());
     }

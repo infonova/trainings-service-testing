@@ -11,10 +11,12 @@ public class RestAssuredAction {
     }
 
     public void sendRequest(String path) {
-        String user = TestContext.getUser();
-        RequestSpecification request = RestAssured.given();
-        request.body(user);
+        String body = String.format("{\n   \"user\": \"%s\",\n   \"correlationId\": \"%s\"\n}", TestContext.getUser(), TestContext.getCorrelationId());
 
+
+        RequestSpecification request = RestAssured.given();
+        request.body(body);
+        request.contentType("application/json");
         TestContext.setResponse(request.get(path));
     }
 

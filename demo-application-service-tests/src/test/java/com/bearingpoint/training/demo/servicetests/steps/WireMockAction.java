@@ -28,7 +28,6 @@ public class WireMockAction {
     }
 
     public List<LoggedRequest> getRequestsSendToWiremockForUrlWithHeader(String url, String headerName, String headerValue) {
-        System.out.println("test");
         return findAll(
                 getRequestedFor(urlMatching(url))
                         .withHeader(headerName, equalTo(headerValue))

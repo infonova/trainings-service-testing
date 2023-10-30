@@ -15,8 +15,11 @@ public class WireMockSteps {
     WireMockAction wireMockAction = new WireMockAction();
 
     @Given("^Wiremock will return for a GET request on \"([^\"]+)\" a status (\\d+) response$")
-    public void wireMockWilLReturnForRequestOnTheResponseCode(String path, Integer expectedStatus) {
-        wireMockAction.addStubMapping(path, expectedStatus);
+    public void wireMockWilLReturnForRequestOnTheResponseCode(String url, Integer expectedStatus) {
+        Map<String, String> substitutionMap = new HashMap<>();
+        substitutionMap.put("${user}", TestContext.getUser());
+        url = TemplateUtils.resolveTemplate(url, substitutionMap);
+        wireMockAction.addStubMapping(url, expectedStatus);
     }
 
     @Given("^Wiremock will return for a GET request on \"([^\"]+)\" a status (\\d+) response with response from \"([^\"]+)\"$")

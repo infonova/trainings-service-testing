@@ -1,7 +1,5 @@
 @Automated
 Feature: Test fancy service
-# todo parallelize test with correlationId id??
-
   Scenario: Call fancy service and success
     Given Wiremock will return for a GET request on "/information?user=${user}" a status 200 response
     When fancy service is called

@@ -1,5 +1,6 @@
 package com.bearingpoint.training.demo.servicetests.steps;
 
+import com.bearingpoint.training.demo.servicetests.config.TestConfig;
 import com.bearingpoint.training.demo.servicetests.context.TestContext;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
@@ -7,7 +8,7 @@ import io.restassured.specification.RequestSpecification;
 public class RestAssuredAction {
 
     public RestAssuredAction() {
-        RestAssured.baseURI = "http://localhost:8080";
+        RestAssured.baseURI = TestConfig.getApplicationUrl();
     }
 
     public void sendRequest(String path) {

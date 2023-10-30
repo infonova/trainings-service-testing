@@ -1,0 +1,18 @@
+version: '3'
+services:
+  wiremock:
+    image: wiremock/wiremock
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 384M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    environment:
+      - JAVA_OPTS=-Xmx256m
+    expose:
+      - 8181
+    ports:
+      - 8181:8080

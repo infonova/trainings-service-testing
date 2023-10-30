@@ -29,6 +29,6 @@ public class DemoController {
 
         Response response = demoService.callExternalService(requestBody);
 
-        return ResponseEntity.ok(response.getBody().prettyPrint());
+        return ResponseEntity.status(response.getStatusCode()).body(response.getBody().prettyPrint());
     }
 }

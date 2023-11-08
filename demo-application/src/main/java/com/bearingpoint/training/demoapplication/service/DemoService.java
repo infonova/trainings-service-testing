@@ -20,4 +20,16 @@ public class DemoService {
 
         return request.get("/information");
     }
+
+    public void executeNewFeature(DemoRequestBody requestBody) {
+        String correlationId = requestBody.getCorrelationId();
+        String user = requestBody.getUser();
+
+        if (!user.equals("DefaultUser")) {
+            // Some logic was done and exception was thrown
+            throw new IllegalArgumentException("Something bad happened!");
+        }
+
+        System.out.println("Value of correlation id: " + correlationId);
+    }
 }

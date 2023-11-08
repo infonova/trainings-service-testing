@@ -11,7 +11,7 @@ public class RestAssuredAction {
         RestAssured.baseURI = TestConfig.getApplicationUrl();
     }
 
-    public void sendRequest(String path) {
+    public void sendRequestToDemoApp(String path) {
         String body = String.format("{\n   \"user\": \"%s\",\n   \"correlationId\": \"%s\"\n}", TestContext.getUser(), TestContext.getCorrelationId());
 
 
@@ -35,5 +35,13 @@ public class RestAssuredAction {
 
     public void deleteRequest(String path) {
         TestContext.setResponse(RestAssured.given().delete(path));
+    }
+
+    public void deleteRequestByUsername(String path, String username) {
+        TestContext.setResponse(
+                RestAssured.given()
+                        .pathParam("username", username)
+                        .delete(path)
+        );
     }
 }

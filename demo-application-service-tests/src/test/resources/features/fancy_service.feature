@@ -16,3 +16,14 @@ Feature: Test fancy service
 
   Scenario: Call fancy service and fail
     # todo write a test that calls fancy service and fails with status code 404
+
+  Scenario: Reproduce Bug
+    # A new bug has been reported.
+    # An exception is thrown in the application when calling the endpoint "/demo/new-feature" with a user other than "DefaultUser"
+    # As a result, the response code becomes 500.
+
+    # To-Do List:
+    # todo: Reproduce this error by writing a new service test
+    # todo: Set a random user in the context (e.g., "BugUser").
+    # todo: Write a new test step that calls the new feature endpoint "/demo/new-feature."
+    # todo: Verify that the HTTP response code is 500.

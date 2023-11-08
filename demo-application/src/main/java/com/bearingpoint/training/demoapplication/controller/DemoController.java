@@ -31,4 +31,12 @@ public class DemoController {
 
         return ResponseEntity.status(response.getStatusCode()).body(response.getBody().prettyPrint());
     }
+
+    @GetMapping(path = "/new-feature")
+    public ResponseEntity<String> executeNewFeature(@RequestBody DemoRequestBody requestBody) throws HttpResponseException {
+
+        demoService.executeNewFeature(requestBody);
+
+        return ResponseEntity.ok().build();
+    }
 }

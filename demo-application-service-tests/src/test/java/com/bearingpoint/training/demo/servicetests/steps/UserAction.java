@@ -19,6 +19,11 @@ public class UserAction {
         restAssuredAction.deleteRequest(endpoint);
     }
 
+    public void deleteUserByUsername(String username) {
+        String endpoint = "/user/{username}";
+        restAssuredAction.deleteRequestByUsername(endpoint, username);
+    }
+
     public void getUsers() {
         String endpoint = "/users";
         restAssuredAction.getRequest(endpoint);

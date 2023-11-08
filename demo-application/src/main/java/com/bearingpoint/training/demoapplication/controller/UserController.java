@@ -31,8 +31,10 @@ public class UserController {
     }
 
     @DeleteMapping(path = "/users")
-    public ResponseEntity<List<User>> deleteUsers() {
+    public ResponseEntity<String> deleteUsers() {
         userService.deleteUsers();
         return ResponseEntity.ok().build();
     }
+
+    //    todo: implement endpoint to delete specific user by given username as path variable
 }

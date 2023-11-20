@@ -20,6 +20,7 @@ public class UserSteps {
     @Then("user \"([^\"]+)\" is successfully deleted$")
     public void deleteUser(String username) {
         userAction.deleteUserByUsername(username);
+        Assertions.assertThat(TestContext.getResponseStatusCode()).isEqualTo(200);
     }
 
     @Then("verify that (\\d+) users were stored via DemoApplication$")

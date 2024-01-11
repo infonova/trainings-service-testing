@@ -4,4 +4,4 @@ services:
     volumes:
       - ${COVERAGE_VOLUME}
     environment:
-      - STARTUP_ARGS=${STARTUP_ARGS}
+      - JAVA_ARGS=${JAVA_ARGS}

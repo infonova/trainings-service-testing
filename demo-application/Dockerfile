@@ -4,5 +4,5 @@ WORKDIR /app
 COPY target/*.jar app.jar
 EXPOSE 8080
 
-ENTRYPOINT exec java $STARTUP_ARGS -jar app.jar
+ENTRYPOINT exec java $JAVA_ARGS -jar app.jar
 # exec necessary: https://akomljen.com/stopping-docker-containers-gracefully/

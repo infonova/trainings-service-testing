@@ -50,7 +50,7 @@ cd ..
 
 ABSOLUTE_TEMP_DIR=$(resolve_relative_path $TEMP_DIR)
 echo COVERAGE_VOLUME=$ABSOLUTE_TEMP_DIR:$CONTAINER_PATH >> $SERVICE_SOURCE_FOLDER/.env
-echo STARTUP_ARGS=-javaagent:$CONTAINER_PATH/lib/jacocoagent.jar=destfile=$CONTAINER_PATH/test.exec,output=file,dumponexit=true >> $SERVICE_SOURCE_FOLDER/.env
+echo JAVA_ARGS=-javaagent:$CONTAINER_PATH/lib/jacocoagent.jar=destfile=$CONTAINER_PATH/test.exec,output=file,dumponexit=true >> $SERVICE_SOURCE_FOLDER/.env
 
 echo "Print env file"
 cat $SERVICE_SOURCE_FOLDER/.env
@@ -89,4 +89,4 @@ OUTPUT_DIR=$(resolve_relative_path $OUTPUT_DIR)
 cd ..
 java -jar $ABSOLUTE_TEMP_DIR/lib/jacococli.jar report $ABSOLUTE_TEMP_DIR/test.exec --sourcefiles=$SERVICE_SOURCE_FOLDER/src/main/java --classfiles $SERVICE_SOURCE_FOLDER/target/classes --html $OUTPUT_DIR
 
-cleanup
+#cleanup

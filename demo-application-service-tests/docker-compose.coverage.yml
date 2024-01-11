@@ -1,0 +1,7 @@
+version: '3'
+services:
+  demo-application:
+    volumes:
+      - ${COVERAGE_VOLUME}
+    environment:
+      - STARTUP_ARGS=${STARTUP_ARGS}

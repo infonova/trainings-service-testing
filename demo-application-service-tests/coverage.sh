@@ -89,4 +89,4 @@ OUTPUT_DIR=$(resolve_relative_path $OUTPUT_DIR)
 cd ..
 java -jar $ABSOLUTE_TEMP_DIR/lib/jacococli.jar report $ABSOLUTE_TEMP_DIR/test.exec --sourcefiles=$SERVICE_SOURCE_FOLDER/src/main/java --classfiles $SERVICE_SOURCE_FOLDER/target/classes --html $OUTPUT_DIR
 
-#cleanup
+cleanup

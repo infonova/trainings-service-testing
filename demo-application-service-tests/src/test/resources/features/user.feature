@@ -17,7 +17,14 @@ Feature: Test user service
     # todo: Prepare the system by storing "user1" and "user2" (similar to the first scenario).
     # todo: Trigger the endpoint to delete the user "Maria.Musterfrau" at the path "/user/Maria.Musterfrau"
     # todo: Verify that only 1 user is stored.
-    # todo: Verify that only "Max.Mustermann" remains stored.
+    # todo: Verify that "Maria.Musterfrau" is not stored anymore.
     # todo: For Cleanup purpose - delete all users
 
     # todo: Implement the necessary endpoint in the application to enable the deletion of a specific user.
+    Given user from file "requests/user1.json" is successfully stored
+    Given user from file "requests/user2.json" is successfully stored
+    When verify that 2 users were stored via DemoApplication
+    Then user "Maria.Musterfrau" is successfully deleted
+    And verify that 1 users were stored via DemoApplication
+    And user "Maria.Musterfrau" is not stored
+    And users get successfully deleted

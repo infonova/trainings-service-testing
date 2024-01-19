@@ -1,5 +1,6 @@
 @Automated
 Feature: Test fancy service
+
   Scenario: Call fancy service and success
     Given Wiremock will return for a GET request on "/information?user=${user}" a status 200 response
     When fancy service is called
@@ -16,6 +17,9 @@ Feature: Test fancy service
 
   Scenario: Call fancy service and fail
     # todo write a test that calls fancy service and fails with status code 404
+    Given Wiremock will return for a GET request on "/information?user=${user}" a status 404 response
+    When fancy service is called
+    Then verify that the http response code is 404
 
   Scenario: Reproduce Bug
     # A new bug has been reported.
@@ -27,3 +31,6 @@ Feature: Test fancy service
     # todo: Set a random user in the context (e.g., "BugUser").
     # todo: Write a new test step that calls the new feature endpoint "/demo/new-feature."
     # todo: Verify that the HTTP response code is 500.
+    Given "BugUser" is set as user in context
+    When new feature is called
+    Then verify that the http response code is 500

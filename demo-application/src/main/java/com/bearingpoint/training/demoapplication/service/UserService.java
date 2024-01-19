@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -20,5 +21,11 @@ public class UserService {
 
     public void deleteUsers(){
         users = new ArrayList<>();
+    }
+
+    public void deleteUserByUsername(String username) {
+        users = users.stream()
+                .filter(user -> !user.getUsername().equals(username))
+                .collect(Collectors.toList());
     }
 }

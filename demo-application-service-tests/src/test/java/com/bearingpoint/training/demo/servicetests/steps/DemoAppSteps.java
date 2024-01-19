@@ -15,6 +15,11 @@ public class DemoAppSteps {
         demoAppAction.sendRequest("/demo/fancy-service");
     }
 
+    @Then("^new feature is called$")
+    public void callNewFeature() {
+        demoAppAction.sendRequest("/demo/new-feature");
+    }
+
     @Then("^verify that the http response code is (\\d+)$")
     public void verifyStatusCodeEqualsTo(Integer statusCode) {
         assertThat(TestContext.getResponseStatusCode()).isEqualTo(statusCode);

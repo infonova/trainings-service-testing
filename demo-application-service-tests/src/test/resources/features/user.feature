@@ -17,7 +17,7 @@ Feature: Test user service
     # todo: Prepare the system by storing "user1" and "user2" (similar to the first scenario).
     # todo: Trigger the endpoint to delete the user "Maria.Musterfrau" at the path "/user/Maria.Musterfrau"
     # todo: Verify that only 1 user is stored.
-    # todo: Verify that only "Max.Mustermann" remains stored.
+    # todo: Verify that "Maria.Musterfrau" is not stored anymore.
     # todo: For Cleanup purpose - delete all users
 
     # todo: Implement the necessary endpoint in the application to enable the deletion of a specific user.
